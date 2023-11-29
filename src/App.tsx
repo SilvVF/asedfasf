@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import dataJson from "./data.json"
 import './App.css';
 import InfoCardList from "./components/InfoCardsList";
+import Carousel from "./components/Carousel";
 
 export type MachineData = {
   id: number
@@ -14,14 +15,19 @@ export type MachineData = {
 }
 
 
+const objects = dataJson.data as [MachineData]
+
 function App() {
 
-  const objects = useMemo(() => dataJson.data as [MachineData], [])
-
   return (
-    <div className="App" >
-      <InfoCardList items={objects} />
-    </div>
+      <div className="App">
+        <header className="App-header">
+          <h1>Items List</h1>
+        </header>
+        <main>
+          <Carousel items={objects} />
+        </main>
+      </div>
   );
 }
 
